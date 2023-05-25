@@ -2,10 +2,10 @@
 import asyncio
 from websockets.server import serve
 from websockets.exceptions import ConnectionClosed
-import ssl
-import pathlib
 import openai
 import orjson
+import ssl
+import pathlib
 import os
 from dotenv import load_dotenv
 import logging
@@ -61,11 +61,11 @@ async def echo(ws):
                     ai_resp = None
                     await asyncio.sleep(1.5)
                     continue
-            
+
             if ai_resp is None:
                 await sock_send(ws, orjson.dumps({'error': "Failed to process streaming request (OpenAI issue)"}))
                 return
-            
+
             for resp in ai_resp:
                 if resp.get('finish_reason', None):
                     break
@@ -110,13 +110,18 @@ async def echo(ws):
             else:
                 await sock_send(ws, orjson.dumps({'error': "Empty request!"}))
 
-ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-ssl_context.load_default_certs()
+ws_args = {}
+if pathlib.Path('./certs').exists():
+    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    cert_pem = pathlib.Path('./certs/domain_chain.crt')
+    key_pem = pathlib.Path('./certs/key.pem')
+    ssl_context.load_cert_chain(cert_pem, keyfile=key_pem)
+    ws_args['ssl'] = ssl_context
 
 async def main():
-    host, port = 'localhost', 8765
+    host, port = '0.0.0.0', 8765
     logger.info(f"Starting server at '{host}:{port}'")
-    async with serve(echo, host, port, ssl=ssl_context):
+    async with serve(echo, host, port, **ws_args):
         await asyncio.Future()
 
 asyncio.run(main())
