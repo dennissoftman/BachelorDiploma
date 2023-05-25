@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Window</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div>
+            
+            <button class="chat-clear">Clear history <i class="fa fa-trash"></i></button>
+        </div>
+        <div class="chat-message-list">
+        </div>
+        <span class="chat-typing-status">
+            <span class="nickname">Assistant typing</span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </span>
+
+        <div class="chat-input-container">
+            <textarea class="chat-input" placeholder="Type your message..."></textarea>
+            <button class="chat-submit">Send</button>
+        </div>
+    </div>
+ 
+    <script src="popup.js"></script>
+</body>
+</html>

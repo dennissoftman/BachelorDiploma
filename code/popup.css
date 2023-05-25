@@ -1,0 +1,185 @@
+.chat-placeholder {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16pt;
+    color: #888;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #e8e6e3;
+}
+
+.chat-container {
+    width: 90vw;
+    margin: 20px auto;
+    border: 1px solid #545454;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #212121;
+}
+
+.chat-message-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 12pt;
+    text-align: left;
+    word-wrap: break-word;
+    background-color: #292929;
+}
+
+.chat-message .message-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.8em;
+}
+
+.chat-message .message-info .sender {
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.chat-message .message-info .timestamp {
+    color: #9e9e9e;
+    font-family: monospace;
+    align-self: flex-end;
+}
+
+.chat-input-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #545454;
+    border-radius: 8px;
+    background-color: #333;
+    color: #e8e6e3;
+}
+
+.chat-submit {
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #4285f4;
+    color: #e8e6e3;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.chat-clear {
+    display: block;
+    margin-bottom: 2px;
+    padding: 2px;
+    border: none;
+    background-color: darkred;
+    color: white;
+    cursor: pointer;
+}
+
+.chat-clear:hover {
+    background-color: firebrick;
+}
+
+.chat-clear:active {
+    background-color: brown;
+}
+
+.chat-submit:hover {
+    background-color: #3367d6;
+}
+
+.chat-submit:active {
+    background-color: #1e40af;
+}
+
+.chat-container .chat-typing-status {
+    display: none;
+    vertical-align: middle;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.chat-container .nickname {
+    display: inline-block;
+    vertical-align: middle;
+    color: #f1f1f1;
+}
+
+.chat-container .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #4285f4;
+    border-radius: 50%;
+    margin-right: 2px;
+}
+
+.chat-container .dot.scale-animation {
+    animation: scaling 500ms infinite;
+}
+
+@keyframes scaling {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+}
+
+/* Define custom scroll style */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Color of the track (background) */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Color of the thumb on hover */
+}
+
+/* Additional styles to hide the scrollbar when not hovered */
+::-webkit-scrollbar-thumb:vertical {
+    min-height: 20px;
+    /* Minimum height of the thumb */
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    min-width: 20px;
+    /* Minimum width of the thumb */
+}
+
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: #444;
+    /* Color of the thumb on hover */
+}
